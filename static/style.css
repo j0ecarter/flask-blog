@@ -1,0 +1,21 @@
+:root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #172033; background: #f5f2ea; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+header { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 1rem max(5vw, 1.25rem); background: #172033; color: white; }
+header a { color: white; text-decoration: none; }
+.brand { font-weight: 800; letter-spacing: .02em; }
+nav { display: flex; align-items: center; gap: 1rem; margin-right: 7rem; }
+nav form { margin: 0; }
+main { width: min(760px, 90vw); margin: 3rem auto; }
+.hero { padding: 2rem 0 3rem; }
+.hero h1 { font-size: clamp(2.4rem, 8vw, 5rem); line-height: .95; margin: .2rem 0 1rem; }
+.eyebrow, .meta { color: #64748b; font-size: .9rem; }
+article, .panel { background: white; border: 1px solid #d8d4ca; border-radius: 12px; padding: 1.4rem; margin-bottom: 1rem; box-shadow: 0 8px 24px #17203310; }
+article a { color: #172033; }
+label { display: grid; gap: .35rem; margin: 1rem 0; font-weight: 700; }
+input, textarea { border: 1px solid #a8a29e; border-radius: 7px; padding: .75rem; font: inherit; }
+button { border: 0; border-radius: 7px; padding: .65rem 1rem; background: #287271; color: white; cursor: pointer; }
+.danger { background: #b42318; }
+.notice { background: #fff3bf; border-radius: 7px; padding: .8rem; }
+.post-body { white-space: pre-wrap; line-height: 1.7; }
+@media (max-width: 700px) { header { align-items: flex-start; gap: .75rem; flex-direction: column; } nav { flex-wrap: wrap; margin-right: 0; } }
