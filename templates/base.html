@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title or "Notebook Blog" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="{{ url_for('index') }}">Notebook Blog</a>
+      <nav>
+        {% if g.user %}
+          <span>Hello, {{ g.user['name'] }}</span>
+          <a href="{{ url_for('new_post') }}">New post</a>
+          <form action="{{ url_for('logout') }}" method="post"><button>Log out</button></form>
+        {% else %}
+          <a href="{{ url_for('login') }}">Log in</a>
+          <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+      </nav>
+    </header>
+    <main>
+      {% for message in get_flashed_messages() %}<p class="notice">{{ message }}</p>{% endfor %}
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

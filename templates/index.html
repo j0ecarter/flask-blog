@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="hero">
+    <p class="eyebrow">A small Flask project</p>
+    <h1>Notes worth keeping</h1>
+    <p>Posts, comments and a quiet place to practise writing.</p>
+  </section>
+  {% if not posts %}<p>No posts yet.</p>{% endif %}
+  {% for post in posts %}
+    <article>
+      <p class="meta">{{ post['author_name'] }} · {{ post['created_at'] }}</p>
+      <h2><a href="{{ url_for('post_detail', post_id=post['id']) }}">{{ post['title'] }}</a></h2>
+      <p>{{ post['body'][:220] }}{% if post['body']|length > 220 %}…{% endif %}</p>
+    </article>
+  {% endfor %}
+{% endblock %}

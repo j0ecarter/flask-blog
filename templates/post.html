@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <article>
+    <p class="meta">{{ post['author_name'] }} · {{ post['created_at'] }}</p>
+    <h1>{{ post['title'] }}</h1>
+    <div class="post-body">{{ post['body'] }}</div>
+    {% if g.user and g.user['id'] == post['author_id'] %}
+      <p><a href="{{ url_for('edit_post', post_id=post['id']) }}">Edit</a></p>
+      <form action="{{ url_for('delete_post', post_id=post['id']) }}" method="post"><button class="danger">Delete</button></form>
+    {% endif %}
+  </article>
+  <section>
+    <h2>Comments</h2>
+    {% for comment in comments %}<p><strong>{{ comment['author_name'] }}:</strong> {{ comment['body'] }}</p>{% else %}<p>No comments yet.</p>{% endfor %}
+    {% if g.user %}
+      <form class="panel" method="post"><label>Add a comment<textarea name="body" rows="4" required></textarea></label><button>Comment</button></form>
+    {% else %}<p><a href="{{ url_for('login') }}">Log in</a> to comment.</p>{% endif %}
+  </section>
+{% endblock %}
